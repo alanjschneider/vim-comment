@@ -22,4 +22,4 @@ function! ToggleComment()
   normal! j
 endfunction
 
-command! ToggleComment call ToggleComment()
+command! ToggleComment call ToggleComment()<CR>
