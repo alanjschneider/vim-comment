@@ -21,3 +21,5 @@ function! ToggleComment()
 
   normal! j
 endfunction
+
+command! ToggleComment call ToggleComment()
