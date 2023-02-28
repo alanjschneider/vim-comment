@@ -2,6 +2,15 @@
 
 A simple plugin for comment lines of code
 
+## Installation
+
+Vim-Plug
+```vim
+call plug#begin()
+    Plug 'alanjoelschneider/vim-comment'
+call plug#end()
+```
+
 ## How to use it
 
 Add a bind to ```:ToggleComment```
