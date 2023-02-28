@@ -1,5 +1,3 @@
-let g:goNextLine = v:true
-
 function! GetCommentString()
   let ext = expand('%:e')
 
@@ -14,7 +12,7 @@ function! GetCommentString()
   endif
 endfunction
 
-function! ToggleComment()
+function! vim-comment#ToggleComment()
   let comment = GetCommentString()
 
   let line = getline('.')
@@ -30,5 +28,3 @@ function! ToggleComment()
   	normal! j
 	endif
 endfunction
-
-command! ToggleComment call ToggleComment()

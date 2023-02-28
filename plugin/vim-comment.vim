@@ -3,3 +3,6 @@ if exists("g:loadedVimComment")
 endif
 
 let g:loadedVimComment = 1
+let g:goNextLine = v:true
+
+command! ToggleComment call vim-comment#ToggleComment()

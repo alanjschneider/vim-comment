@@ -15,7 +15,7 @@ Now if you press ```Ctrl + /``` the current line will be commented
 By default, after a line is commented the cursor goes to the next line.
 If you want the cursor not to go to the next line you need to change the ```g:goNextLine``` to ```false```
 ```vim
-let g:goNextLine = false
+let g:goNextLine = v:false
 ```
 
 ## Comment multiple lines
