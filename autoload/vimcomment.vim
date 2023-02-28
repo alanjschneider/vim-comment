@@ -12,7 +12,7 @@ function! GetCommentString()
   endif
 endfunction
 
-function! vim-comment#ToggleComment()
+function! vimcomment#ToggleComment()
   let comment = GetCommentString()
 
   let line = getline('.')
