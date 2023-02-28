@@ -1,30 +1,30 @@
 function! GetCommentString()
-  let ext = expand('%:e')
+	let ext = expand('%:e')
 
-	if ext in ["c", "cpp", "js", "php", "java"]
+	if index(["c", "cpp", "js", "php", "java"], ext) != -1
 		return '// '
-  elseif ext == "vim"
-    return '" '
-  elseif ext == "py" || ext == "sh" || ext == "bashrc"
-    return "# "
+	elseif ext == "vim"
+		return '" '
+	elseif ext == "py" || ext == "sh" || ext == "bashrc"
+		return "# "
 	elseif ext == "lua"
 		return "--"
-  endif
+	endif
 endfunction
 
 function! vimcomment#ToggleComment()
-  let comment = GetCommentString()
+	let comment = GetCommentString()
 
-  let line = getline('.')
-  let lineBegining = strpart(line, 0, len(comment))
+	let line = getline('.')
+	let lineBegining = strpart(line, 0, len(comment))
 
-  if lineBegining == comment
-    call setline('.', strpart(line, len(comment), len(line)))
-  else
-	  call setline('.', comment . line)
-  endif
-  
+	if lineBegining == comment
+		call setline('.', strpart(line, len(comment), len(line)))
+	else
+		call setline('.', comment . line)
+	endif
+
 	if g:goNextLine
-  	normal! j
+		normal! j
 	endif
 endfunction
