@@ -8,7 +8,7 @@ function! GetCommentString()
 	elseif ext == "py" || ext == "sh" || ext == "bashrc"
 		return "# "
 	elseif ext == "lua"
-		return "--"
+		return "-- "
 	endif
 endfunction
 
