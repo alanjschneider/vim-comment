@@ -1,14 +1,19 @@
-function! ToggleComment()
+function! GetCommentString()
   let ext = expand('%:e')
-  let comment = ""
 
-  if ext == "c" || ext == "cpp" || ext == "js"
-    let comment = '// '
+	if ext in ["c", "cpp", "js", "php", "java"]
+		return '// '
   elseif ext == "vim"
-    let comment = '" '
+    return '" '
   elseif ext == "py" || ext == "sh" || ext == "bashrc"
-    let comment = "# "
+    return "# "
+	elseif ext == "lua"
+		return "--"
   endif
+endfunction
+
+function! ToggleComment()
+  let comment = GetCommentString()
 
   let line = getline('.')
   let lineBegining = strpart(line, 0, len(comment))
@@ -18,8 +23,8 @@ function! ToggleComment()
   else
 	  call setline('.', comment . line)
   endif
-
-  normal! j
+  
+	if g:goNextLine
+  	normal! j
+	endif
 endfunction
-
-command! ToggleComment call ToggleComment()
