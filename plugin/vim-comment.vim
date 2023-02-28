@@ -1,4 +1,4 @@
-if exists(g:loadedVimComment)
+if exists("g:loadedVimComment")
 	finish
 endif
 
