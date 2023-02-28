@@ -1,3 +1,5 @@
+let g:goNextLine = v:true
+
 function! GetCommentString()
   let ext = expand('%:e')
 
@@ -28,3 +30,5 @@ function! ToggleComment()
   	normal! j
 	endif
 endfunction
+
+command! ToggleComment call ToggleComment()
