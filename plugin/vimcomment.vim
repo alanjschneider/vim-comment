@@ -13,13 +13,15 @@ function! GetCommentString()
 
 	if index(["c", "cpp", "js", "php", "java"], ext) != -1
 		return '// '
-	elseif ext == "vim"
-		return '" '
-	elseif ext == "py" || ext == "sh" || ext == "bashrc"
+ 	elseif ext == "vim" || ext == "vimrc"
+ 		return '" '
+	elseif index(["py", "sh", "bashrc", "profile"], ext) != -1
 		return "# "
 	elseif ext == "lua"
 		return "-- "
 	endif
+
+	return ""
 endfunction
 
 let g:comment = ""
