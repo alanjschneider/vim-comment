@@ -1,27 +1,33 @@
 if exists("g:loadedVimComment")
-	finish
+    echom g:loadedVimComment
+    finish
 endif
+
+echom "VimComment initialized"
 
 let g:loadedVimComment = 1
 
 if !exists("g:goNextLine")
-	let g:goNextLine = v:true
+    let g:goNextLine = v:true
 endif
 
 function! GetCommentString()
-	let ext = expand('%:e')
+    let ext = expand('%:e')
 
-	if index(["c", "cpp", "js", "php", "java"], ext) != -1
-		return '// '
- 	elseif ext == "vim" || ext == "vimrc"
- 		return '" '
-	elseif index(["py", "sh", "bashrc", "profile"], ext) != -1
-		return "# "
-	elseif ext == "lua"
-		return "-- "
-	endif
+    echom "File: " expand('%')
+    echom "ext: " ext
 
-	return ""
+    if index(["c", "cpp", "js", "php", "java"], ext) != -1
+        return '// '
+    elseif ext == "vim" || ext == "vimrc"
+        return '" '
+    elseif index(["py", "sh", "bashrc", "profile"], ext) != -1
+        return "# "
+    elseif ext == "lua"
+        return "-- "
+    endif
+
+    return ""
 endfunction
 
 let g:comment = ""
