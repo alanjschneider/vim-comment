@@ -14,9 +14,6 @@ endif
 function! GetCommentString()
     let ext = expand('%:e')
 
-    echom "File: " expand('%')
-    echom "ext: " ext
-
     if index(["c", "cpp", "js", "php", "java"], ext) != -1
         return '// '
     elseif ext == "vim" || ext == "vimrc"
