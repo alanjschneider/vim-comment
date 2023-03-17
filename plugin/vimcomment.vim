@@ -1,9 +1,6 @@
 if exists("g:loadedVimComment")
-    echom g:loadedVimComment
     finish
 endif
-
-echom "VimComment initialized"
 
 let g:loadedVimComment = 1
 
@@ -18,7 +15,7 @@ function! GetCommentString()
         return '// '
     elseif ext == "vim" || ext == "vimrc"
         return '" '
-    elseif index(["py", "sh", "bashrc", "profile"], ext) != -1
+    elseif index(["py", "sh", "bashrc", "profile", "Makefile"], ext) != -1
         return "# "
     elseif ext == "lua"
         return "-- "
@@ -29,6 +26,7 @@ endfunction
 
 let g:comment = ""
 
+autocmd BufNewFile * let g:comment = GetCommentString()
 autocmd BufRead * let g:comment = GetCommentString()
 autocmd FileChangedShellPost * let g:comment = GetCommentString()
 command! ToggleComment call vimcomment#ToggleComment()
