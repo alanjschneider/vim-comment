@@ -1,12 +1,13 @@
 function! vimcomment#ToggleComment()
     let line = getline('.')
-    let lineBegining = strpart(line, 0, len(g:comment))
 
-    if lineBegining == g:comment
-        call setline('.', strpart(line, len(g:comment), len(line)))
+    if match(line, '^\s*' . g:comment . '.*') != -1
+        let newLine = substitute(line, '\(^\s*' . g:comment .'\s\)', '', 'g')
     else
-        call setline('.', g:comment . line)
+        let newLine = substitute(g:comment, '\', '', 'g') . ' ' . line
     endif
+
+    call setline('.', newLine)
 
     if g:goNextLine
         normal! j

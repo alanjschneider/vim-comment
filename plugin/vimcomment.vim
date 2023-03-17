@@ -12,13 +12,13 @@ function! GetCommentString()
     let ext = expand('%:e')
 
     if index(["c", "cpp", "js", "php", "java"], ext) != -1
-        return '// '
+        return '\/\/'
     elseif ext == "vim" || ext == "vimrc"
-        return '" '
+        return '\"'
     elseif index(["py", "sh", "bashrc", "profile", "Makefile"], ext) != -1
-        return "# "
+        return '\#';
     elseif ext == "lua"
-        return "-- "
+        return '\-\-'
     endif
 
     return ""
